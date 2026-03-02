@@ -27,11 +27,11 @@ const Header = () => {
             <span className="font-heading text-lg font-bold text-primary leading-none">
               Anis Criações
             </span>
-            <span className={`text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 ${isAssistencia ? 'text-blue-600' : 'text-muted-foreground'}`}>
-              & Connect Cell
-              <img src="/connect-cell.png" alt="" className="h-4 w-auto grayscale group-hover:grayscale-0 transition-all" />
+            <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tight">
+              Personalizados e acessórios
             </span>
           </div>
+
         </Link>
 
 

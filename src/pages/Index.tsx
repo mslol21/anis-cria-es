@@ -19,14 +19,21 @@ const Index = () => {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link to="/produtos-personalizados" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img src="/logo.png" alt="Anis Criações" className="h-12 w-auto" />
-            <h1 className="text-xl font-heading font-extrabold text-primary hidden sm:block">Anis Criações</h1>
+            <div className="flex flex-col leading-tight hidden sm:flex">
+              <h1 className="text-xl font-heading font-extrabold text-primary">Anis Criações</h1>
+              <span className="text-[10px] text-muted-foreground font-medium">Personalizados e acessórios</span>
+            </div>
           </Link>
+
           <Link 
             to="/assistencia-tecnica" 
-            className="hidden md:flex items-center gap-3 text-sm text-muted-foreground font-medium bg-white/40 px-4 py-2 rounded-full border border-white/20 backdrop-blur-sm hover:bg-white/60 transition-all"
+            className="hidden md:flex items-center gap-3 text-sm text-slate-700 font-bold bg-white/40 px-4 py-2 rounded-full border border-white/20 backdrop-blur-sm hover:bg-white/60 transition-all"
           >
-            <span>Parceria</span>
             <img src="/connect-cell.png" alt="Connect Cell Logo" className="h-8 w-auto" />
+            <div className="flex flex-col leading-tight">
+              <span>Connect Cell</span>
+              <span className="text-[10px] text-muted-foreground font-normal">Loja confiável e segura</span>
+            </div>
           </Link>
         </div>
       </header>
@@ -101,11 +108,12 @@ const Index = () => {
                 <img src="/connect-cell.png" alt="Assistência Técnica" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-3xl font-heading font-bold text-foreground mb-4">
-                Assistência Técnica <span className="text-blue-600 block text-xl">Connect Cell</span>
+                Connect Cell <span className="text-blue-600 block text-xl">Assistência Técnica</span>
               </h3>
               <p className="text-muted-foreground text-lg mb-8 flex-grow">
-                Troca de tela, bateria, conector e manutenção geral de celulares. Em parceria com Connect Cell.
+                Loja confiável e segura. Troca de tela, bateria, conector e venda de acessórios.
               </p>
+
               <Link
                 to="/assistencia-tecnica"
                 className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"

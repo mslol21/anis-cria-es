@@ -1,26 +1,11 @@
 import { motion } from "framer-motion";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { MessageCircle } from "lucide-react";
-
-import catCanecas from "@/assets/cat-canecas.jpg";
-import catCamisetas from "@/assets/cat-camisetas.jpg";
-import catBrindes from "@/assets/cat-brindes.jpg";
-import catCartoes from "@/assets/cat-cartoes.jpg";
-import catPanfletos from "@/assets/cat-panfletos.jpg";
-import catLembrancinhas from "@/assets/cat-lembrancinhas.jpg";
-import catKits from "@/assets/cat-kits.jpg";
-
-const categories = [
-  { name: "Canecas Personalizadas", image: catCanecas },
-  { name: "Camisetas e Uniformes", image: catCamisetas },
-  { name: "Brindes Promocionais", image: catBrindes },
-  { name: "Cartões de Visita", image: catCartoes },
-  { name: "Panfletos e Banners", image: catPanfletos },
-  { name: "Lembrancinhas para Festas", image: catLembrancinhas },
-  { name: "Kits Promocionais", image: catKits },
-];
+import { useStore } from "@/lib/store";
 
 const CategoriesSection = () => {
+  const { products } = useStore();
+
   return (
     <section id="categorias" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -39,9 +24,9 @@ const CategoriesSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {categories.map((cat, i) => (
+          {products.map((cat, i) => (
             <motion.a
-              key={cat.name}
+              key={cat.id}
               href={getWhatsAppLink(cat.name)}
               target="_blank"
               rel="noopener noreferrer"
@@ -76,3 +61,4 @@ const CategoriesSection = () => {
 };
 
 export default CategoriesSection;
+

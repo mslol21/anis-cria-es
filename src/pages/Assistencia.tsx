@@ -5,12 +5,12 @@ import { Smartphone, Battery, Zap, Settings, ShoppingBag, MessageCircle } from "
 import { getWhatsAppGenericLink } from "@/lib/whatsapp";
 
 const services = [
-  { icon: Smartphone, title: "Troca de Tela", desc: "Telas originais e primeira linha com garantia." },
-  { icon: Battery, title: "Troca de Bateria", desc: "Baterias de alta performance para seu smartphone." },
-  { icon: Zap, title: "Conector de Carga", desc: "Reparo rápido para problemas de carregamento." },
-  { icon: Settings, title: "Manutenção em Geral", desc: "Software, limpeza técnica e reparos em placa." },
-  { icon: ShoppingBag, title: "Venda de Acessórios", desc: "Capas, películas, carregadores e cabos." },
+  { icon: Smartphone, title: "Tela", desc: "Telas originais e primeira linha com garantia." },
+  { icon: Battery, title: "Bateria", desc: "Baterias de alta performance para seu smartphone." },
+  { icon: Zap, title: "Conector", desc: "Reparo rápido para problemas de carregamento." },
+  { icon: ShoppingBag, title: "Acessórios", desc: "Capas, películas, carregadores e cabos." },
 ];
+
 
 const Assistencia = () => {
   return (
@@ -34,8 +34,9 @@ const Assistencia = () => {
             animate={{ opacity: 1, y: 0 }}
             className="mb-6 inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-bold text-sm"
           >
-            PARCERIA COM CONNECT CELL
+            CONNECT CELL
           </motion.div>
+
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -43,16 +44,17 @@ const Assistencia = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-heading font-extrabold text-slate-900 mb-4"
           >
-            Assistência Técnica <span className="text-blue-600">Especializada</span>
+            Connect Cell <span className="text-blue-600">Assistência Técnica</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-slate-600 max-w-2xl mx-auto"
+            className="text-xl text-slate-600 max-w-2xl mx-auto font-medium"
           >
-            Conserto de celulares com rapidez, transparência e o melhor preço da região.
+            Loja confiável e segura. Conserto de celulares com rapidez e transparência.
           </motion.p>
+
         </section>
 
         <section className="container mx-auto px-4 grid md:grid-cols-3 gap-8 mb-20">

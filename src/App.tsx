@@ -7,7 +7,9 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import Personalizados from "./pages/Personalizados";
 import Assistencia from "./pages/Assistencia";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -33,7 +35,9 @@ const App = () => (
           <Route path="/assistencia-tecnica" element={<Assistencia />} />
           <Route path="/promocoes" element={<Personalizados />} />
           <Route path="/contato" element={<Personalizados />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
