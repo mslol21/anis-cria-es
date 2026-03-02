@@ -180,19 +180,25 @@ const Admin = () => {
 
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm shadow-2xl overflow-y-auto">
+          <div 
+            className="fixed inset-0 z-[100] overflow-y-auto bg-black/40 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6"
+            onClick={() => { setIsModalOpen(false); setEditingProduct(null); }}
+          >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white rounded-[2.5rem] p-8 w-full max-w-lg shadow-2xl relative my-8"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-[2.5rem] p-6 md:p-10 w-full max-w-lg shadow-2xl relative my-auto"
             >
               <button 
                 onClick={() => { setIsModalOpen(false); setEditingProduct(null); }}
-                className="absolute top-6 right-6 p-2 text-muted-foreground hover:bg-slate-50 rounded-full"
+                className="absolute top-6 right-6 p-2 text-muted-foreground hover:bg-slate-50 rounded-full transition-colors z-10"
+                type="button"
               >
                 <X className="w-5 h-5" />
               </button>
+
               
               <h2 className="text-2xl font-heading font-bold mb-6">
                 {editingProduct ? "Editar Produto" : "Novo Produto"}
