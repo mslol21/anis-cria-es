@@ -11,7 +11,14 @@ const Admin = () => {
   const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
-  const [formData, setFormData] = useState({ name: "", image: "", category: "Personalizados" });
+  const [formData, setFormData] = useState({ 
+    name: "", 
+    image: "", 
+    category: "Personalizados", 
+    price: "", 
+    promoPrice: "", 
+    description: "" 
+  });
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,15 +38,22 @@ const Admin = () => {
     }
     setIsModalOpen(false);
     setEditingProduct(null);
-    setFormData({ name: "", image: "", category: "Personalizados" });
+    setFormData({ name: "", image: "", category: "Personalizados", price: "", promoPrice: "", description: "" });
   };
 
   const openEdit = (product: Product) => {
     setEditingProduct(product);
-    setFormData({ name: product.name, image: product.image, category: product.category });
+    setFormData({ 
+      name: product.name, 
+      image: product.image, 
+      category: product.category,
+      price: product.price || "",
+      promoPrice: product.promoPrice || "",
+      description: product.description || ""
+    });
     setIsModalOpen(true);
   };
-
+// ... (previous handleFileChange stays same)
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -52,6 +66,7 @@ const Admin = () => {
   };
 
   if (!isLoggedIn) {
+// ... (isLoggedIn login view stays same)
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col">
         <Header />
@@ -102,7 +117,7 @@ const Admin = () => {
               <button
                 onClick={() => {
                   setEditingProduct(null);
-                  setFormData({ name: "", image: "", category: "Personalizados" });
+                  setFormData({ name: "", image: "", category: "Personalizados", price: "", promoPrice: "", description: "" });
                   setIsModalOpen(true);
                 }}
                 className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold shadow-lg hover:opacity-90 transition-all"
@@ -132,9 +147,16 @@ const Admin = () => {
                 </div>
                 <div className="flex-grow overflow-hidden">
                   <h3 className="font-bold text-slate-900 truncate">{product.name}</h3>
-                  <span className="text-xs text-muted-foreground bg-slate-100 px-2 py-1 rounded-md uppercase font-bold tracking-wider">
-                    {product.category}
-                  </span>
+                  <div className="flex items-center gap-2 flex-wrap mt-1">
+                    <span className="text-[10px] text-muted-foreground bg-slate-100 px-2 py-0.5 rounded uppercase font-bold tracking-wider">
+                      {product.category}
+                    </span>
+                    {product.price && (
+                      <span className="text-[10px] font-bold text-primary">
+                        R$ {product.price}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button 
@@ -158,12 +180,12 @@ const Admin = () => {
 
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm shadow-2xl overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white rounded-[2.5rem] p-8 w-full max-w-md shadow-2xl relative"
+              className="bg-white rounded-[2.5rem] p-8 w-full max-w-lg shadow-2xl relative my-8"
             >
               <button 
                 onClick={() => { setIsModalOpen(false); setEditingProduct(null); }}
@@ -176,17 +198,51 @@ const Admin = () => {
                 {editingProduct ? "Editar Produto" : "Novo Produto"}
               </h2>
 
-              <form onSubmit={handleSave} className="space-y-5">
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Nome do Produto</label>
-                  <input
-                    required
-                    type="text"
-                    className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    placeholder="Ex: Caneca Mágica"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
+              <form onSubmit={handleSave} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="col-span-2">
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Nome do Produto</label>
+                    <input
+                      required
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      placeholder="Ex: Caneca Mágica"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+
+                  <div className="col-span-2">
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Descrição Curta</label>
+                    <textarea
+                      className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20 h-20 resize-none"
+                      placeholder="Detalhes sobre o material, tamanho, etc."
+                      value={formData.description}
+                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1">Preço (R$)</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      placeholder="35,00"
+                      value={formData.price}
+                      onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1">Preço Promo (R$)</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      placeholder="29,90"
+                      value={formData.promoPrice}
+                      onChange={(e) => setFormData({ ...formData, promoPrice: e.target.value })}
+                    />
+                  </div>
                 </div>
                 
                 <div>
@@ -221,6 +277,36 @@ const Admin = () => {
                     </div>
                   </div>
                 </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-slate-700 mb-2">Categoria</label>
+                  <select
+                    className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none bg-white"
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  >
+                    <option value="Personalizados">Personalizados</option>
+                    <option value="Impressos">Impressos</option>
+                    <option value="Promocional">Promocional</option>
+                    <option value="Outros">Outros</option>
+                  </select>
+                </div>
+
+                <div className="pt-4 flex gap-3">
+                  <button
+                    type="submit"
+                    className="flex-grow bg-primary text-white py-4 rounded-xl font-bold shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Check className="w-5 h-5" />
+                    {editingProduct ? "Salvar Alterações" : "Criar Produto"}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
 
                 <div>
                   <label className="block text-sm font-bold text-slate-700 mb-2">Categoria</label>
