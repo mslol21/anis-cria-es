@@ -307,39 +307,10 @@ const Admin = () => {
         )}
       </AnimatePresence>
 
-
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">Categoria</label>
-                  <select
-                    className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none bg-white"
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  >
-                    <option value="Personalizados">Personalizados</option>
-                    <option value="Impressos">Impressos</option>
-                    <option value="Promocional">Promocional</option>
-                    <option value="Outros">Outros</option>
-                  </select>
-                </div>
-
-                <div className="pt-4 flex gap-3">
-                  <button
-                    type="submit"
-                    className="flex-grow bg-primary text-white py-4 rounded-xl font-bold shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2"
-                  >
-                    <Check className="w-5 h-5" />
-                    {editingProduct ? "Salvar Alterações" : "Criar Produto"}
-                  </button>
-                </div>
-              </form>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
       <Footer />
     </div>
   );
 };
 
 export default Admin;
+
