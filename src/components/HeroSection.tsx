@@ -12,12 +12,16 @@ const HeroSection = () => {
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <img
-          src={heroBg}
-          alt="Produtos personalizados"
+          src="/hero-final.png"
+          alt="Produtos personalizados Anis Criações"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-hero opacity-80" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
+
+
+
+
 
       <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.h1

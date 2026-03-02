@@ -2,48 +2,70 @@ import { useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getWhatsAppGenericLink } from "@/lib/whatsapp";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Início", href: "#inicio" },
-  { label: "Categorias", href: "#categorias" },
-  { label: "Promoções", href: "#promocoes" },
-  { label: "Como Funciona", href: "#como-funciona" },
-  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "Início", href: "/" },
+  { label: "Personalizados", href: "/produtos-personalizados" },
+  { label: "Assistência Técnica", href: "/assistencia-tecnica" },
+  { label: "Promoções", href: "/promocoes" },
+  { label: "Contato", href: "/contato" },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const isAssistencia = location.pathname === "/assistencia-tecnica";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <a href="#inicio" className="font-heading text-2xl font-bold text-primary">
-          Anis Criações
-        </a>
+      <div className="container mx-auto px-4 flex items-center justify-between h-20">
+        <Link to="/" className="flex items-center gap-3 group">
+          <img src="/logo.png" alt="Anis Criações" className="h-14 w-auto group-hover:scale-105 transition-transform" />
+          <div className="flex flex-col">
+            <span className="font-heading text-lg font-bold text-primary leading-none">
+              Anis Criações
+            </span>
+            <span className={`text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 ${isAssistencia ? 'text-blue-600' : 'text-muted-foreground'}`}>
+              & Connect Cell
+              <img src="/connect-cell.png" alt="" className="h-4 w-auto grayscale group-hover:grayscale-0 transition-all" />
+            </span>
+          </div>
+        </Link>
+
+
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              to={link.href}
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === link.href 
+                ? (isAssistencia ? 'text-blue-600' : 'text-primary') 
+                : 'text-foreground/80 hover:text-primary'
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
           <a
-            href={getWhatsAppGenericLink()}
+            href={getWhatsAppGenericLink(isAssistencia)}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground px-5 py-2.5 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity animate-pulse-glow"
+            className={`hidden sm:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity animate-pulse-glow ${
+              isAssistencia ? 'bg-blue-600' : 'bg-whatsapp'
+            }`}
           >
             <MessageCircle className="w-4 h-4" />
-            Peça pelo WhatsApp
+            {isAssistencia ? "Falar com Técnico" : "Peça pelo WhatsApp"}
           </a>
+
 
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -65,23 +87,29 @@ const Header = () => {
           >
             <nav className="flex flex-col p-4 gap-3">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-sm font-medium text-foreground/80 hover:text-primary py-2"
+                  className={`text-sm font-medium py-2 ${
+                    location.pathname === link.href 
+                    ? (isAssistencia ? 'text-blue-600' : 'text-primary') 
+                    : 'text-foreground/80 hover:text-primary'
+                  }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <a
                 href={getWhatsAppGenericLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-whatsapp text-whatsapp-foreground px-5 py-3 rounded-full font-semibold text-sm mt-2"
+                className={`inline-flex items-center justify-center gap-2 text-white px-5 py-3 rounded-full font-semibold text-sm mt-2 ${
+                  isAssistencia ? 'bg-blue-600' : 'bg-whatsapp'
+                }`}
               >
                 <MessageCircle className="w-4 h-4" />
-                Peça pelo WhatsApp
+                {isAssistencia ? "Falar com Técnico" : "Peça pelo WhatsApp"}
               </a>
             </nav>
           </motion.div>
@@ -92,3 +120,4 @@ const Header = () => {
 };
 
 export default Header;
+

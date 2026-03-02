@@ -1,11 +1,21 @@
-const WHATSAPP_NUMBER = "5500000000000"; // Replace with actual number
+export const WHATSAPP_NUMBERS = {
+  anis: "5511914378109",
+  connectCell: "5511966159084",
+};
 
 export const getWhatsAppLink = (productName: string) => {
-  const message = encodeURIComponent(`Olá, quero orçamento para ${productName}`);
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+  const message = encodeURIComponent(`Olá Anis Criações! Vi no site e quero orçamento para ${productName}`);
+  return `https://wa.me/${WHATSAPP_NUMBERS.anis}?text=${message}`;
 };
 
-export const getWhatsAppGenericLink = () => {
-  const message = encodeURIComponent("Olá! Gostaria de solicitar um orçamento.");
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+export const getWhatsAppGenericLink = (isConnectCell = false) => {
+  const target = isConnectCell ? WHATSAPP_NUMBERS.connectCell : WHATSAPP_NUMBERS.anis;
+  const message = encodeURIComponent(
+    isConnectCell 
+      ? "Olá Connect Cell! Gostaria de solicitar um orçamento para assistência técnica." 
+      : "Olá Anis Criações! Gostaria de solicitar um orçamento para personalizados."
+  );
+  return `https://wa.me/${target}?text=${message}`;
 };
+
+
