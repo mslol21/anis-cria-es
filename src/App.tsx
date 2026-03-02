@@ -7,8 +7,10 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import Personalizados from "./pages/Personalizados";
 import Assistencia from "./pages/Assistencia";
+import Promocoes from "./pages/Promocoes";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+
 
 
 const ScrollToTop = () => {
@@ -33,7 +35,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/produtos-personalizados" element={<Personalizados />} />
           <Route path="/assistencia-tecnica" element={<Assistencia />} />
-          <Route path="/promocoes" element={<Personalizados />} />
+          <Route path="/promocoes" element={<Promocoes />} />
+
           <Route path="/contato" element={<Personalizados />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />

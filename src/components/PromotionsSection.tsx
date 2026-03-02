@@ -1,37 +1,16 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Flame } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
-
-const promos = [
-  {
-    name: "Caneca Personalizada",
-    oldPrice: "R$ 45,00",
-    newPrice: "R$ 29,90",
-    desc: "Com sua foto ou arte",
-  },
-  {
-    name: "100 Cartões de Visita",
-    oldPrice: "R$ 80,00",
-    newPrice: "R$ 49,90",
-    desc: "Frente e verso, papel couchê",
-  },
-  {
-    name: "Camiseta Personalizada",
-    oldPrice: "R$ 65,00",
-    newPrice: "R$ 39,90",
-    desc: "Sublimação total",
-  },
-  {
-    name: "Kit Brinde Empresarial",
-    oldPrice: "R$ 120,00",
-    newPrice: "R$ 89,90",
-    desc: "Caneca + caneta + sacola",
-  },
-];
+import { useStore } from "@/lib/store";
 
 const PromotionsSection = () => {
+  const { products } = useStore();
+  const promos = products.filter(p => p.promoPrice);
+
+  if (promos.length === 0) return null;
+
   return (
-    <section id="promocoes" className="py-20 bg-muted">
+    <section id="promocoes" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,47 +18,60 @@ const PromotionsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-4 py-2 rounded-full font-bold text-sm mb-4">
+          <div className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full font-bold text-sm mb-4">
             <Flame className="w-4 h-4" />
             PROMOÇÕES DA SEMANA
           </div>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground">
-            Ofertas <span className="text-accent">Imperdíveis</span>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900">
+            Ofertas <span className="text-primary">Imperdíveis</span>
           </h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {promos.map((promo, i) => (
             <motion.div
-              key={promo.name}
+              key={promo.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-promo transition-shadow relative overflow-hidden"
+              className="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 group relative overflow-hidden"
             >
-              <div className="absolute top-3 right-3 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded-full">
+              <div className="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10">
                 OFERTA
               </div>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-1">
+              
+              <div className="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-slate-100 flex items-center justify-center">
+                <img 
+                  src={promo.image} 
+                  alt={promo.name} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+
+              <h3 className="font-heading font-bold text-xl text-slate-900 mb-2">
                 {promo.name}
               </h3>
-              <p className="text-muted-foreground text-sm mb-4">{promo.desc}</p>
-              <div className="mb-5">
-                <span className="text-muted-foreground line-through text-sm mr-2">
-                  {promo.oldPrice}
+              <p className="text-muted-foreground text-sm mb-6 line-clamp-2">
+                {promo.description || "Personalize do seu jeito com o melhor acabamento!"}
+              </p>
+              
+              <div className="mb-6 flex flex-col">
+                <span className="text-muted-foreground line-through text-xs font-medium">
+                  R$ {promo.price}
                 </span>
-                <span className="text-3xl font-heading font-extrabold text-accent">
-                  {promo.newPrice}
+                <span className="text-3xl font-heading font-extrabold text-primary leading-tight">
+                  R$ {promo.promoPrice}
                 </span>
               </div>
+              
               <a
                 href={getWhatsAppLink(promo.name)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full bg-whatsapp text-whatsapp-foreground py-3 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center gap-2 w-full bg-whatsapp text-whatsapp-foreground py-4 rounded-2xl font-bold text-sm hover:opacity-90 shadow-lg shadow-whatsapp/20 transition-all active:scale-95"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-5 h-5" />
                 Quero esse!
               </a>
             </motion.div>
@@ -91,3 +83,4 @@ const PromotionsSection = () => {
 };
 
 export default PromotionsSection;
+

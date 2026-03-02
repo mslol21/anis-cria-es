@@ -13,8 +13,8 @@ const Personalizados = () => {
       <Header />
       <HeroSection />
       <CategoriesSection />
-      <PromotionsSection />
       <HowItWorksSection />
+
       <TestimonialsSection />
       <CTASection />
       <Footer />
