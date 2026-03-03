@@ -1,7 +1,7 @@
 // Redeploy trigger
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Gift, Smartphone, ArrowRight } from "lucide-react";
+import { Gift, ArrowRight } from "lucide-react";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -67,7 +67,7 @@ const Index = () => {
           </motion.p>
         </div>
 
-        <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
+        <div className="container mx-auto grid md:grid-cols-2 gap-8 max-w-4xl">
           {/* Bloco 1: Produtos Personalizados */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -96,34 +96,6 @@ const Index = () => {
             </div>
           </motion.div>
 
-          {/* NOVO: Bloco 2: Linha Connect */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="group relative overflow-hidden bg-white rounded-[2rem] border border-border p-8 shadow-xl hover:shadow-2xl transition-all h-full"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-slate-900/5 rounded-full -mr-16 -mt-16 group-hover:bg-slate-900/10 transition-colors"></div>
-            <div className="relative z-10 flex flex-col h-full text-center items-center">
-              <div className="w-20 h-20 bg-slate-900 text-white rounded-[1.5rem] flex items-center justify-center mb-6 overflow-hidden self-center shadow-lg">
-                <Smartphone className="w-10 h-10" />
-              </div>
-              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
-                Linha <span className="text-slate-900 block text-lg">Anis Connect</span>
-              </h3>
-              <p className="text-muted-foreground text-sm mb-6 flex-grow">
-                Tecnologia e conectividade. Cartões NFC e produtos inteligentes para sua empresa.
-              </p>
-              <Link
-                to="/assistencia-tecnica"
-                className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-lg w-full justify-center"
-              >
-                Descobrir Connect
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-            </div>
-          </motion.div>
 
           {/* Bloco 3: Assistência Técnica */}
           <motion.div
