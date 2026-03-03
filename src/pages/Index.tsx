@@ -66,66 +66,93 @@ const Index = () => {
           </motion.p>
         </div>
 
-        <div className="container mx-auto grid md:grid-cols-2 gap-8 max-w-5xl">
+        <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
           {/* Bloco 1: Produtos Personalizados */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="group relative overflow-hidden bg-white rounded-[2rem] border border-border p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all"
+            className="group relative overflow-hidden bg-white rounded-[2rem] border border-border p-8 shadow-xl hover:shadow-2xl transition-all h-full"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
             <div className="relative z-10 flex flex-col h-full text-center items-center">
-              <div className="w-24 h-24 bg-primary/20 text-primary rounded-[2rem] flex items-center justify-center mb-8 overflow-hidden self-center shadow-lg shadow-primary/10">
-                <img src="/logo.png" alt="Personalizados" className="w-16 h-16 object-contain" />
+              <div className="w-20 h-20 bg-primary/20 text-primary rounded-[1.5rem] flex items-center justify-center mb-6 overflow-hidden self-center shadow-lg shadow-primary/10">
+                <img src="/logo.png" alt="Personalizados" className="w-12 h-12 object-contain" />
               </div>
-              <h3 className="text-3xl font-heading font-bold text-foreground mb-4">
-                Personalizados <span className="text-primary block text-xl">Anis Criações</span>
+              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+                Linha <span className="text-primary block text-lg">Personalizados</span>
               </h3>
-              <p className="text-muted-foreground text-lg mb-8 flex-grow">
-                Camisetas, canecas, brindes, cartões, panfletos e lembrancinhas feitas com carinho.
+              <p className="text-muted-foreground text-sm mb-6 flex-grow">
+                Camisetas, canecas, brindes e materiais impressos com exclusividade.
               </p>
               <Link
                 to="/produtos-personalizados"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition-all shadow-lg"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-lg w-full justify-center"
               >
-                Ver Produtos
-                <ArrowRight className="w-5 h-5" />
+                Ver Catálogo
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </motion.div>
 
-          {/* Bloco 2: Assistência Técnica */}
+          {/* NOVO: Bloco 2: Linha Connect */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="group relative overflow-hidden bg-white rounded-[2rem] border border-border p-8 shadow-xl hover:shadow-2xl transition-all h-full"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-slate-900/5 rounded-full -mr-16 -mt-16 group-hover:bg-slate-900/10 transition-colors"></div>
+            <div className="relative z-10 flex flex-col h-full text-center items-center">
+              <div className="w-20 h-20 bg-slate-900 text-white rounded-[1.5rem] flex items-center justify-center mb-6 overflow-hidden self-center shadow-lg">
+                <Smartphone className="w-10 h-10" />
+              </div>
+              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+                Linha <span className="text-slate-900 block text-lg">Anis Connect</span>
+              </h3>
+              <p className="text-muted-foreground text-sm mb-6 flex-grow">
+                Tecnologia e conectividade. Cartões NFC e produtos inteligentes para sua empresa.
+              </p>
+              <Link
+                to="/connect"
+                className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-lg w-full justify-center"
+              >
+                Descobrir Connect
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Bloco 3: Assistência Técnica */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="group relative overflow-hidden bg-white rounded-[2rem] border border-border p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all"
+            className="group relative overflow-hidden bg-white rounded-[2rem] border border-border p-8 shadow-xl hover:shadow-2xl transition-all h-full"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-blue-500/10 transition-colors"></div>
             <div className="relative z-10 flex flex-col h-full text-center items-center">
-              <div className="w-24 h-24 bg-blue-100 text-blue-600 rounded-[2rem] flex items-center justify-center mb-8 overflow-hidden self-center shadow-lg shadow-blue-100/50">
-                <img src="/connect-cell.png" alt="Assistência Técnica" className="w-16 h-16 object-contain" />
+              <div className="w-20 h-20 bg-blue-100 text-blue-600 rounded-[1.5rem] flex items-center justify-center mb-6 overflow-hidden self-center shadow-lg shadow-blue-100/50">
+                <img src="/connect-cell.png" alt="Assistência Técnica" className="w-12 h-12 object-contain" />
               </div>
-              <h3 className="text-3xl font-heading font-bold text-foreground mb-4">
-                Connect Cell <span className="text-blue-600 block text-xl">Assistência Técnica</span>
+              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+                Connect Cell <span className="text-blue-600 block text-lg">Especializada</span>
               </h3>
-              <p className="text-muted-foreground text-lg mb-8 flex-grow">
-                Loja confiável e segura. Troca de tela, bateria, conector e venda de acessórios.
+              <p className="text-muted-foreground text-sm mb-6 flex-grow">
+                Manutenção de celulares, tablets e venda de acessórios premium.
               </p>
 
               <Link
                 to="/assistencia-tecnica"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 w-full justify-center"
               >
-                Solicitar Orçamento
-                <ArrowRight className="w-5 h-5" />
+                Solicitar Técnico
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-
           </motion.div>
-
         </div>
+
       </main>
 
       <Footer />

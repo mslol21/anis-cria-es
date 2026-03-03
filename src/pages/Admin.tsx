@@ -306,9 +306,11 @@ const Admin = () => {
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                   >
                     <option value="Personalizados">Personalizados</option>
+                    <option value="Connect">Connect</option>
                     <option value="Impressos">Impressos</option>
                     <option value="Promocional">Promocional</option>
                     <option value="Outros">Outros</option>
+
                   </select>
                 </div>
 

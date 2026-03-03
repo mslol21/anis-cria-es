@@ -8,7 +8,9 @@ import Index from "./pages/Index";
 import Personalizados from "./pages/Personalizados";
 import Assistencia from "./pages/Assistencia";
 import Promocoes from "./pages/Promocoes";
+import Connect from "./pages/Connect";
 import Admin from "./pages/Admin";
+
 import NotFound from "./pages/NotFound";
 
 
@@ -36,6 +38,8 @@ const App = () => (
           <Route path="/produtos-personalizados" element={<Personalizados />} />
           <Route path="/assistencia-tecnica" element={<Assistencia />} />
           <Route path="/promocoes" element={<Promocoes />} />
+          <Route path="/connect" element={<Connect />} />
+
 
           <Route path="/contato" element={<Personalizados />} />
           <Route path="/admin" element={<Admin />} />
