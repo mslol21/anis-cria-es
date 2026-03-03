@@ -20,7 +20,9 @@ const Admin = () => {
     category: "Personalizados", 
     price: "", 
     promoprice: "", 
-    description: "" 
+    description: "",
+    isConsultPrice: false,
+    isStartingPrice: false
   });
 
   const handleLogin = (e: React.FormEvent) => {
@@ -61,7 +63,9 @@ const Admin = () => {
       category: product.category,
       price: product.price || "",
       promoprice: product.promoprice || "",
-      description: product.description || ""
+      description: product.description || "",
+      isConsultPrice: product.isConsultPrice || false,
+      isStartingPrice: product.isStartingPrice || false
     });
     setIsModalOpen(true);
   };
@@ -129,7 +133,16 @@ const Admin = () => {
               <button
                 onClick={() => {
                   setEditingProduct(null);
-                  setFormData({ name: "", image: "", category: "Personalizados", price: "", promoprice: "", description: "" });
+                  setFormData({ 
+                    name: "", 
+                    image: "", 
+                    category: "Personalizados", 
+                    price: "", 
+                    promoprice: "", 
+                    description: "",
+                    isConsultPrice: false,
+                    isStartingPrice: false
+                  });
                   setIsModalOpen(true);
                 }}
                 className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold shadow-lg hover:opacity-90 transition-all"
@@ -163,9 +176,13 @@ const Admin = () => {
                     <span className="text-[10px] text-muted-foreground bg-slate-100 px-2 py-0.5 rounded uppercase font-bold tracking-wider">
                       {product.category}
                     </span>
-                    {product.price && (
+                    {product.isConsultPrice ? (
+                      <span className="text-[10px] font-bold text-primary italic">
+                        Sob Consulta
+                      </span>
+                    ) : product.price && (
                       <span className="text-[10px] font-bold text-primary">
-                        R$ {product.price}
+                        {product.isStartingPrice && "A partir de "}R$ {product.price}
                       </span>
                     )}
                   </div>
@@ -274,6 +291,34 @@ const Admin = () => {
                   </div>
 
                 </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-2">
+                  <label className="flex items-center gap-3 cursor-pointer flex-1">
+                    <input
+                      type="checkbox"
+                      className="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary/20"
+                      checked={formData.isConsultPrice}
+                      onChange={(e) => setFormData({ ...formData, isConsultPrice: e.target.checked })}
+                    />
+                    <div className="flex flex-col text-left">
+                      <span className="text-sm font-bold text-slate-700 leading-tight">Sob Consulta</span>
+                      <span className="text-[10px] text-muted-foreground italic leading-none mt-1">Sob Encomenda</span>
+                    </div>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer flex-1 sm:border-l sm:border-slate-200 sm:pl-4">
+                    <input
+                      type="checkbox"
+                      className="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary/20"
+                      checked={formData.isStartingPrice}
+                      onChange={(e) => setFormData({ ...formData, isStartingPrice: e.target.checked })}
+                    />
+                    <div className="flex flex-col text-left">
+                      <span className="text-sm font-bold text-slate-700 leading-tight">A partir de...</span>
+                      <span className="text-[10px] text-muted-foreground italic leading-none mt-1">Preços variados</span>
+                    </div>
+                  </label>
+                </div>
+
                 
                 <div>
                   <label className="block text-sm font-bold text-slate-700 mb-2">Imagem do Produto</label>

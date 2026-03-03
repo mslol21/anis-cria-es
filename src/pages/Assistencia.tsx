@@ -130,23 +130,30 @@ const Assistencia = () => {
                   
                   <div className="mt-auto pt-4 border-t border-slate-50 flex flex-col gap-3">
                     <div className="flex flex-col">
-                      {product.promoprice ? (
+                      {product.isConsultPrice ? (
+                        <span className="text-xl font-heading font-extrabold text-blue-600 leading-none italic">
+                          Sob Consulta
+                        </span>
+                      ) : product.promoprice ? (
                         <>
                           <span className="text-muted-foreground line-through text-[10px] font-medium leading-none mb-1">
                             R$ {product.price}
                           </span>
                           <span className="text-xl font-heading font-extrabold text-blue-600 leading-none">
+                            {product.isStartingPrice && <span className="text-[10px] font-medium block text-slate-500 lowercase">a partir de</span>}
                             R$ {product.promoprice}
                           </span>
                         </>
                       ) : (
                         product.price && (
                           <span className="text-xl font-heading font-extrabold text-slate-900 leading-none">
+                            {product.isStartingPrice && <span className="text-[10px] font-medium block text-slate-500 lowercase">a partir de</span>}
                             R$ {product.price}
                           </span>
                         )
                       )}
                     </div>
+
                     
                     <a
                       href={getWhatsAppLink(product.name)}

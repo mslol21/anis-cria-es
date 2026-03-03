@@ -66,24 +66,31 @@ const PromotionsSection = () => {
                 {promo.description || "Personalize do seu jeito com o melhor acabamento!"}
               </p>
               
-              <div className="mb-6 flex flex-col mt-auto">
-                {promo.promoprice ? (
+              <div className="mb-6 flex flex-col mt-auto font-heading">
+                {promo.isConsultPrice ? (
+                  <span className="text-2xl font-extrabold text-primary leading-tight italic">
+                    Sob Consulta
+                  </span>
+                ) : promo.promoprice ? (
                   <>
                     <span className="text-muted-foreground line-through text-xs font-medium">
                       R$ {promo.price}
                     </span>
-                    <span className="text-3xl font-heading font-extrabold text-primary leading-tight">
+                    <span className="text-3xl font-extrabold text-primary leading-tight">
+                      {promo.isStartingPrice && <span className="text-xs font-medium block text-slate-500 lowercase">a partir de</span>}
                       R$ {promo.promoprice}
                     </span>
                   </>
                 ) : (
                   promo.price && (
-                    <span className="text-3xl font-heading font-extrabold text-slate-900 leading-tight">
+                    <span className="text-3xl font-extrabold text-slate-900 leading-tight">
+                      {promo.isStartingPrice && <span className="text-xs font-medium block text-slate-500 lowercase">a partir de</span>}
                       R$ {promo.price}
                     </span>
                   )
                 )}
               </div>
+
               
               <a
                 href={getWhatsAppLink(promo.name)}

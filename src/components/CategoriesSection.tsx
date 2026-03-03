@@ -58,23 +58,30 @@ const CategoriesSection = () => {
                 
                 <div className="flex items-end justify-between gap-2">
                   <div className="flex flex-col">
-                    {cat.promoprice ? (
+                    {cat.isConsultPrice ? (
+                      <span className="text-secondary font-bold text-sm leading-none italic">
+                        Sob Consulta
+                      </span>
+                    ) : cat.promoprice ? (
                       <>
                         <span className="text-white/50 text-[10px] line-through leading-none">
                           R$ {cat.price}
                         </span>
-                        <span className="text-secondary font-bold text-lg leading-none">
+                        <span className="text-secondary font-bold text-lg leading-none mt-1">
+                          {cat.isStartingPrice && <span className="text-[8px] font-medium block text-white/40 lowercase">a partir</span>}
                           R$ {cat.promoprice}
                         </span>
                       </>
                     ) : (
                       cat.price && (
                         <span className="text-white font-bold text-lg leading-none">
+                          {cat.isStartingPrice && <span className="text-[8px] font-medium block text-white/40 lowercase">a partir</span>}
                           R$ {cat.price}
                         </span>
                       )
                     )}
                   </div>
+
                   <span className="inline-flex items-center gap-1 text-[10px] bg-whatsapp text-whatsapp-foreground px-3 py-1.5 rounded-full font-bold shadow-lg transform group-hover:scale-105 transition-transform">
                     <MessageCircle className="w-3 h-3" />
                     Pedir
