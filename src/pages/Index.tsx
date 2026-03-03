@@ -114,12 +114,13 @@ const Index = () => {
                 Tecnologia e conectividade. Cartões NFC e produtos inteligentes para sua empresa.
               </p>
               <Link
-                to="/connect"
+                to="/assistencia-tecnica"
                 className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-lg w-full justify-center"
               >
                 Descobrir Connect
                 <ArrowRight className="w-4 h-4" />
               </Link>
+
             </div>
           </motion.div>
 
