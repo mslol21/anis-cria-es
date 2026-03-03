@@ -10,8 +10,8 @@ const navLinks = [
   { label: "Assistência Técnica", href: "/assistencia-tecnica" },
 
 
-  { label: "Promoções", href: "/promocoes" },
   { label: "Contato", href: "/contato" },
+
 ];
 
 const Header = () => {
