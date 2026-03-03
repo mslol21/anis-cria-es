@@ -29,17 +29,22 @@ const Admin = () => {
     }
   };
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (editingProduct) {
-      updateProduct({ ...editingProduct, ...formData });
-    } else {
-      addProduct(formData);
+    try {
+      if (editingProduct) {
+        await updateProduct({ ...editingProduct, ...formData });
+      } else {
+        await addProduct(formData);
+      }
+      setIsModalOpen(false);
+      setEditingProduct(null);
+      setFormData({ name: "", image: "", category: "Personalizados", price: "", promoPrice: "", description: "" });
+    } catch (error) {
+      alert("Erro ao salvar produto. Verifique sua conexão ou se a tabela no Supabase foi criada.");
     }
-    setIsModalOpen(false);
-    setEditingProduct(null);
-    setFormData({ name: "", image: "", category: "Personalizados", price: "", promoPrice: "", description: "" });
   };
+
 
   const openEdit = (product: Product) => {
     setEditingProduct(product);
@@ -166,11 +171,20 @@ const Admin = () => {
                     <Pencil className="w-4 h-4" />
                   </button>
                   <button 
-                    onClick={() => deleteProduct(product.id)}
+                    onClick={async () => {
+                      if (confirm("Tem certeza que deseja excluir?")) {
+                        try {
+                          await deleteProduct(product.id);
+                        } catch (error) {
+                          alert("Erro ao excluir produto.");
+                        }
+                      }
+                    }}
                     className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
+
                 </div>
               </motion.div>
             ))}

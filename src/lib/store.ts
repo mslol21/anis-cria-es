@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { supabase } from './supabase';
 
 export interface Product {
   id: string;
@@ -8,101 +9,102 @@ export interface Product {
   price?: string;
   promoPrice?: string;
   description?: string;
+  created_at?: string;
 }
-
-const DEFAULT_PRODUCTS: Product[] = [
-  { 
-    id: '1', 
-    name: "Canecas Personalizadas", 
-    image: "/cat-canecas.jpg", 
-    category: "Personalizados", 
-    price: "35,00", 
-    promoPrice: "29,90",
-    description: "Canecas de cerâmica de alta qualidade com sua arte favorita."
-  },
-  { 
-    id: '2', 
-    name: "Camisetas e Uniformes", 
-    image: "/cat-camisetas.jpg", 
-    category: "Personalizados", 
-    price: "55,00", 
-    promoPrice: "45,00",
-    description: "Tecidos premium com estamparia durável e cores vibrantes."
-  },
-  { 
-    id: '3', 
-    name: "Brindes Promocionais", 
-    image: "/cat-brindes.jpg", 
-    category: "Personalizados", 
-    price: "15,00",
-    description: "Chaveiros, canetas e diversos brindes para sua empresa."
-  },
-  { 
-    id: '4', 
-    name: "Cartões de Visita", 
-    image: "/cat-cartoes.jpg", 
-    category: "Impressos", 
-    price: "120,00", 
-    promoPrice: "99,00",
-    description: "Papel couchê 300g com verniz localizado ou total."
-  },
-  { 
-    id: '5', 
-    name: "Panfletos e Banners", 
-    image: "/cat-panfletos.jpg", 
-    category: "Impressos", 
-    price: "180,00",
-    description: "Material gráfico em diversos tamanhos e acabamentos."
-  },
-  { 
-    id: '6', 
-    name: "Lembrancinhas para Festas", 
-    image: "/cat-lembrancinhas.jpg", 
-    category: "Personalizados", 
-    price: "8,50", 
-    promoPrice: "6,99",
-    description: "Pequenos mimos personalizados para seus convidados."
-  },
-  { 
-    id: '7', 
-    name: "Kits Promocionais", 
-    image: "/cat-kits.jpg", 
-    category: "Promocional",
-    description: "Kits completos com caneta, bloco e sacola personalizada."
-  },
-];
-
-
 
 export const useStore = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Erro ao buscar produtos:', error);
+      } else {
+        setProducts(data || []);
+      }
+    } catch (err) {
+      console.error('Erro inesperado:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const saved = localStorage.getItem('anis_products');
-    if (saved) {
-      setProducts(JSON.parse(saved));
-    } else {
-      setProducts(DEFAULT_PRODUCTS);
-    }
+    fetchProducts();
+
+    // Opcional: ouvir mudanças em tempo real
+    const channel = supabase
+      .channel('products-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, () => {
+        fetchProducts();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
-  const saveProducts = (newProducts: Product[]) => {
-    setProducts(newProducts);
-    localStorage.setItem('anis_products', JSON.stringify(newProducts));
+  const addProduct = async (product: Omit<Product, 'id' | 'created_at'>) => {
+    try {
+      const { error } = await supabase
+        .from('products')
+        .insert([product]);
+
+      if (error) {
+        console.error('Erro ao adicionar produto:', error);
+        throw error;
+      }
+    } catch (err) {
+      console.error('Erro ao adicionar produto:', err);
+      throw err;
+    }
   };
 
-  const addProduct = (product: Omit<Product, 'id'>) => {
-    const newProduct = { ...product, id: Date.now().toString() };
-    saveProducts([...products, newProduct]);
+  const updateProduct = async (updatedProduct: Product) => {
+    try {
+      // Remove campos que não devem ser enviados na atualização se necessário
+      const { id, created_at, ...updateData } = updatedProduct;
+      
+      const { error } = await supabase
+        .from('products')
+        .update(updateData)
+        .eq('id', id);
+
+      if (error) {
+        console.error('Erro ao atualizar produto:', error);
+        throw error;
+      }
+    } catch (err) {
+      console.error('Erro ao atualizar produto:', err);
+      throw err;
+    }
   };
 
-  const updateProduct = (updatedProduct: Product) => {
-    saveProducts(products.map(p => p.id === updatedProduct.id ? updatedProduct : p));
+  const deleteProduct = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('products')
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        console.error('Erro ao deletar produto:', error);
+        throw error;
+      }
+    } catch (err) {
+      console.error('Erro ao deletar produto:', err);
+      throw err;
+    }
   };
 
-  const deleteProduct = (id: string) => {
-    saveProducts(products.filter(p => p.id !== id));
-  };
-
-  return { products, addProduct, updateProduct, deleteProduct };
+  return { products, addProduct, updateProduct, deleteProduct, loading, refresh: fetchProducts };
 };
+
