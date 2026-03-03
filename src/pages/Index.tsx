@@ -80,8 +80,8 @@ const Index = () => {
               <div className="w-20 h-20 bg-primary/20 text-primary rounded-[1.5rem] flex items-center justify-center mb-6 overflow-hidden self-center shadow-lg shadow-primary/10">
                 <img src="/logo.png" alt="Personalizados" className="w-12 h-12 object-contain" />
               </div>
-              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
-                Linha <span className="text-primary block text-lg">Personalizados</span>
+              <h3 className="text-2xl font-heading font-bold text-foreground mb-3 leading-tight">
+                Anis <span className="text-primary block text-lg">Criações</span>
               </h3>
               <p className="text-muted-foreground text-sm mb-6 flex-grow">
                 Camisetas, canecas, brindes e materiais impressos com exclusividade.
