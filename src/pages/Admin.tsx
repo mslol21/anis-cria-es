@@ -2,7 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Pencil, Trash2, X, Check, Lock, LogOut, Image as ImageIcon } from "lucide-react";
 import { useStore, Product } from "@/lib/store";
+import { formatPrice } from "@/lib/utils";
 import Header from "@/components/Header";
+
 import Footer from "@/components/Footer";
 
 const Admin = () => {
@@ -254,22 +256,23 @@ const Admin = () => {
                     <input
                       type="text"
                       className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder="35,00"
+                      placeholder="0,00"
                       value={formData.price}
-                      onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                      onChange={(e) => setFormData({ ...formData, price: formatPrice(e.target.value) })}
                     />
                   </div>
-
+ 
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1">Preço Promo (R$)</label>
                     <input
                       type="text"
                       className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder="29,90"
+                      placeholder="0,00"
                       value={formData.promoprice}
-                      onChange={(e) => setFormData({ ...formData, promoprice: e.target.value })}
+                      onChange={(e) => setFormData({ ...formData, promoprice: formatPrice(e.target.value) })}
                     />
                   </div>
+
                 </div>
                 
                 <div>
