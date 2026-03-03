@@ -1,3 +1,4 @@
+// Redeploy trigger
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Gift, Smartphone, ArrowRight } from "lucide-react";
