@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Smartphone, Battery, ShoppingBag, MessageCircle } from "lucide-react";
+import { Smartphone, Battery, Zap, ShoppingBag, MessageCircle } from "lucide-react";
 import { getWhatsAppGenericLink, getWhatsAppLink } from "@/lib/whatsapp";
 import { useStore } from "@/lib/store";
 
