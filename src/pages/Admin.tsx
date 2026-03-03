@@ -6,7 +6,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const Admin = () => {
-  const { products, addProduct, updateProduct, deleteProduct } = useStore();
+  const { products, addProduct, updateProduct, deleteProduct, refresh } = useStore();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,10 +41,14 @@ const Admin = () => {
       setIsModalOpen(false);
       setEditingProduct(null);
       setFormData({ name: "", image: "", category: "Personalizados", price: "", promoprice: "", description: "" });
+      
+      // Forçar atualização da lista imediatamente
+      if (refresh) await refresh();
     } catch (error) {
       alert("Erro ao salvar produto. Verifique sua conexão ou se a tabela no Supabase foi criada.");
     }
   };
+
 
 
   const openEdit = (product: Product) => {
@@ -175,7 +180,9 @@ const Admin = () => {
                       if (confirm("Tem certeza que deseja excluir?")) {
                         try {
                           await deleteProduct(product.id);
+                          if (refresh) await refresh();
                         } catch (error) {
+
                           alert("Erro ao excluir produto.");
                         }
                       }
