@@ -67,7 +67,7 @@ const PromotionsSection = () => {
               </p>
               
               <div className="mb-6 flex flex-col mt-auto font-heading">
-                {promo.isConsultPrice ? (
+                {promo.isconsultprice ? (
                   <span className="text-2xl font-extrabold text-primary leading-tight italic">
                     Sob Consulta
                   </span>
@@ -77,14 +77,14 @@ const PromotionsSection = () => {
                       R$ {promo.price}
                     </span>
                     <span className="text-3xl font-extrabold text-primary leading-tight">
-                      {promo.isStartingPrice && <span className="text-xs font-medium block text-slate-500 lowercase">a partir de</span>}
+                      {promo.isstartingprice && <span className="text-xs font-medium block text-slate-500 lowercase">a partir de</span>}
                       R$ {promo.promoprice}
                     </span>
                   </>
                 ) : (
                   promo.price && (
                     <span className="text-3xl font-extrabold text-slate-900 leading-tight">
-                      {promo.isStartingPrice && <span className="text-xs font-medium block text-slate-500 lowercase">a partir de</span>}
+                      {promo.isstartingprice && <span className="text-xs font-medium block text-slate-500 lowercase">a partir de</span>}
                       R$ {promo.price}
                     </span>
                   )

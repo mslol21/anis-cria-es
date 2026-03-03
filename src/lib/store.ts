@@ -10,8 +10,8 @@ export interface Product {
   promoprice?: string;
   description?: string;
   created_at?: string;
-  isConsultPrice?: boolean;
-  isStartingPrice?: boolean;
+  isconsultprice?: boolean;
+  isstartingprice?: boolean;
 }
 
 export const useStore = () => {

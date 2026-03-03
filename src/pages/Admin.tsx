@@ -21,8 +21,8 @@ const Admin = () => {
     price: "", 
     promoprice: "", 
     description: "",
-    isConsultPrice: false,
-    isStartingPrice: false
+    isconsultprice: false,
+    isstartingprice: false
   });
 
   const handleLogin = (e: React.FormEvent) => {
@@ -44,7 +44,16 @@ const Admin = () => {
       }
       setIsModalOpen(false);
       setEditingProduct(null);
-      setFormData({ name: "", image: "", category: "Personalizados", price: "", promoprice: "", description: "" });
+      setFormData({ 
+        name: "", 
+        image: "", 
+        category: "Personalizados", 
+        price: "", 
+        promoprice: "", 
+        description: "",
+        isconsultprice: false,
+        isstartingprice: false
+      });
       
       // Forçar atualização da lista imediatamente
       if (refresh) await refresh();
@@ -64,8 +73,8 @@ const Admin = () => {
       price: product.price || "",
       promoprice: product.promoprice || "",
       description: product.description || "",
-      isConsultPrice: product.isConsultPrice || false,
-      isStartingPrice: product.isStartingPrice || false
+      isconsultprice: product.isconsultprice || false,
+      isstartingprice: product.isstartingprice || false
     });
     setIsModalOpen(true);
   };
@@ -140,8 +149,8 @@ const Admin = () => {
                     price: "", 
                     promoprice: "", 
                     description: "",
-                    isConsultPrice: false,
-                    isStartingPrice: false
+                    isconsultprice: false,
+                    isstartingprice: false
                   });
                   setIsModalOpen(true);
                 }}
@@ -176,13 +185,13 @@ const Admin = () => {
                     <span className="text-[10px] text-muted-foreground bg-slate-100 px-2 py-0.5 rounded uppercase font-bold tracking-wider">
                       {product.category}
                     </span>
-                    {product.isConsultPrice ? (
+                    {product.isconsultprice ? (
                       <span className="text-[10px] font-bold text-primary italic">
                         Sob Consulta
                       </span>
                     ) : product.price && (
                       <span className="text-[10px] font-bold text-primary">
-                        {product.isStartingPrice && "A partir de "}R$ {product.price}
+                        {product.isstartingprice && "A partir de "}R$ {product.price}
                       </span>
                     )}
                   </div>
@@ -293,30 +302,30 @@ const Admin = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-2">
-                  <label className="flex items-center gap-3 cursor-pointer flex-1">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary/20"
-                      checked={formData.isConsultPrice}
-                      onChange={(e) => setFormData({ ...formData, isConsultPrice: e.target.checked })}
-                    />
-                    <div className="flex flex-col text-left">
-                      <span className="text-sm font-bold text-slate-700 leading-tight">Sob Consulta</span>
-                      <span className="text-[10px] text-muted-foreground italic leading-none mt-1">Sob Encomenda</span>
-                    </div>
-                  </label>
-                  <label className="flex items-center gap-3 cursor-pointer flex-1 sm:border-l sm:border-slate-200 sm:pl-4">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary/20"
-                      checked={formData.isStartingPrice}
-                      onChange={(e) => setFormData({ ...formData, isStartingPrice: e.target.checked })}
-                    />
-                    <div className="flex flex-col text-left">
-                      <span className="text-sm font-bold text-slate-700 leading-tight">A partir de...</span>
-                      <span className="text-[10px] text-muted-foreground italic leading-none mt-1">Preços variados</span>
-                    </div>
-                  </label>
+                    <label className="flex items-center gap-3 cursor-pointer flex-1">
+                      <input
+                        type="checkbox"
+                        className="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary/20"
+                        checked={formData.isconsultprice}
+                        onChange={(e) => setFormData({ ...formData, isconsultprice: e.target.checked })}
+                      />
+                      <div className="flex flex-col text-left">
+                        <span className="text-sm font-bold text-slate-700 leading-tight">Sob Consulta</span>
+                        <span className="text-[10px] text-muted-foreground italic leading-none mt-1">Sob Encomenda</span>
+                      </div>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer flex-1 sm:border-l sm:border-slate-200 sm:pl-4">
+                      <input
+                        type="checkbox"
+                        className="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary/20"
+                        checked={formData.isstartingprice}
+                        onChange={(e) => setFormData({ ...formData, isstartingprice: e.target.checked })}
+                      />
+                      <div className="flex flex-col text-left">
+                        <span className="text-sm font-bold text-slate-700 leading-tight">A partir de...</span>
+                        <span className="text-[10px] text-muted-foreground italic leading-none mt-1">Preços variados</span>
+                      </div>
+                    </label>
                 </div>
 
                 
