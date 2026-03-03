@@ -16,7 +16,7 @@ const Admin = () => {
     image: "", 
     category: "Personalizados", 
     price: "", 
-    promoPrice: "", 
+    promoprice: "", 
     description: "" 
   });
 
@@ -39,7 +39,7 @@ const Admin = () => {
       }
       setIsModalOpen(false);
       setEditingProduct(null);
-      setFormData({ name: "", image: "", category: "Personalizados", price: "", promoPrice: "", description: "" });
+      setFormData({ name: "", image: "", category: "Personalizados", price: "", promoprice: "", description: "" });
     } catch (error) {
       alert("Erro ao salvar produto. Verifique sua conexão ou se a tabela no Supabase foi criada.");
     }
@@ -53,7 +53,7 @@ const Admin = () => {
       image: product.image, 
       category: product.category,
       price: product.price || "",
-      promoPrice: product.promoPrice || "",
+      promoprice: product.promoprice || "",
       description: product.description || ""
     });
     setIsModalOpen(true);
@@ -122,7 +122,7 @@ const Admin = () => {
               <button
                 onClick={() => {
                   setEditingProduct(null);
-                  setFormData({ name: "", image: "", category: "Personalizados", price: "", promoPrice: "", description: "" });
+                  setFormData({ name: "", image: "", category: "Personalizados", price: "", promoprice: "", description: "" });
                   setIsModalOpen(true);
                 }}
                 className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold shadow-lg hover:opacity-90 transition-all"
@@ -259,8 +259,8 @@ const Admin = () => {
                       type="text"
                       className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary/20"
                       placeholder="29,90"
-                      value={formData.promoPrice}
-                      onChange={(e) => setFormData({ ...formData, promoPrice: e.target.value })}
+                      value={formData.promoprice}
+                      onChange={(e) => setFormData({ ...formData, promoprice: e.target.value })}
                     />
                   </div>
                 </div>

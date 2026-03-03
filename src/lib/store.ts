@@ -7,7 +7,7 @@ export interface Product {
   image: string;
   category: string;
   price?: string;
-  promoPrice?: string;
+  promoprice?: string;
   description?: string;
   created_at?: string;
 }

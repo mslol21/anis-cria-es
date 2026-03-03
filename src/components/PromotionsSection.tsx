@@ -5,7 +5,7 @@ import { useStore } from "@/lib/store";
 
 const PromotionsSection = () => {
   const { products } = useStore();
-  const promoProducts = products.filter(p => p.promoPrice);
+  const promoProducts = products.filter(p => p.promoprice);
   
   // Se não houver promoções, mostrar os primeiros 4 produtos do catálogo por padrão
   const displayProducts = promoProducts.length > 0 ? promoProducts : products.slice(0, 4);
@@ -44,7 +44,7 @@ const PromotionsSection = () => {
               transition={{ delay: i * 0.1 }}
               className="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 group relative overflow-hidden h-full flex flex-col"
             >
-              {promo.promoPrice && (
+              {promo.promoprice && (
                 <div className="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10">
                   OFERTA
                 </div>
@@ -67,13 +67,13 @@ const PromotionsSection = () => {
               </p>
               
               <div className="mb-6 flex flex-col mt-auto">
-                {promo.promoPrice ? (
+                {promo.promoprice ? (
                   <>
                     <span className="text-muted-foreground line-through text-xs font-medium">
                       R$ {promo.price}
                     </span>
                     <span className="text-3xl font-heading font-extrabold text-primary leading-tight">
-                      R$ {promo.promoPrice}
+                      R$ {promo.promoprice}
                     </span>
                   </>
                 ) : (

@@ -58,13 +58,13 @@ const CategoriesSection = () => {
                 
                 <div className="flex items-end justify-between gap-2">
                   <div className="flex flex-col">
-                    {cat.promoPrice ? (
+                    {cat.promoprice ? (
                       <>
                         <span className="text-white/50 text-[10px] line-through leading-none">
                           R$ {cat.price}
                         </span>
                         <span className="text-secondary font-bold text-lg leading-none">
-                          R$ {cat.promoPrice}
+                          R$ {cat.promoprice}
                         </span>
                       </>
                     ) : (

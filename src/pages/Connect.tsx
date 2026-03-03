@@ -72,13 +72,13 @@ const Connect = () => {
                   
                   <div className="mt-auto pt-4 border-t border-slate-50">
                     <div className="mb-6 flex flex-col">
-                      {product.promoPrice ? (
+                      {product.promoprice ? (
                         <>
                           <span className="text-muted-foreground line-through text-xs font-medium">
                             R$ {product.price}
                           </span>
                           <span className="text-3xl font-heading font-extrabold text-primary leading-tight">
-                            R$ {product.promoPrice}
+                            R$ {product.promoprice}
                           </span>
                         </>
                       ) : (
