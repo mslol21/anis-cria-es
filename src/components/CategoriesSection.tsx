@@ -24,10 +24,17 @@ const CategoriesSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {products.map((cat, i) => (
+          {products.map((cat, i) => {
+            const priceText = cat.isconsultprice 
+              ? undefined 
+              : (cat.promoprice || cat.price) 
+                ? `${cat.isstartingprice ? 'a partir de ' : ''}R$ ${cat.promoprice || cat.price}`
+                : undefined;
+
+            return (
             <motion.a
               key={cat.id}
-              href={getWhatsAppLink(cat.name)}
+              href={getWhatsAppLink(cat.name, priceText)}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
@@ -91,7 +98,8 @@ const CategoriesSection = () => {
               </div>
 
             </motion.a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

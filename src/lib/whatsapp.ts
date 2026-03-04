@@ -3,9 +3,12 @@ export const WHATSAPP_NUMBERS = {
   connectCell: "5511966159084",
 };
 
-export const getWhatsAppLink = (productName: string) => {
-  const message = encodeURIComponent(`Olá Anis Criações! Vi no site e quero orçamento para ${productName}`);
-  return `https://wa.me/${WHATSAPP_NUMBERS.anis}?text=${message}`;
+export const getWhatsAppLink = (productName: string, priceText?: string) => {
+  let message = `Olá Anis Criações! Vi no site e quero orçamento para ${productName}`;
+  if (priceText) {
+    message += ` no valor de ${priceText}`;
+  }
+  return `https://wa.me/${WHATSAPP_NUMBERS.anis}?text=${encodeURIComponent(message)}`;
 };
 
 export const getWhatsAppGenericLink = (isConnectCell = false) => {

@@ -35,7 +35,14 @@ const PromotionsSection = () => {
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayProducts.map((promo, i) => (
+          {displayProducts.map((promo, i) => {
+            const priceText = promo.isconsultprice 
+              ? undefined 
+              : (promo.promoprice || promo.price) 
+                ? `${promo.isstartingprice ? 'a partir de ' : ''}R$ ${promo.promoprice || promo.price}`
+                : undefined;
+
+            return (
             <motion.div
               key={promo.id}
               initial={{ opacity: 0, y: 30 }}
@@ -93,7 +100,7 @@ const PromotionsSection = () => {
 
               
               <a
-                href={getWhatsAppLink(promo.name)}
+                href={getWhatsAppLink(promo.name, priceText)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full bg-whatsapp text-white py-4 rounded-2xl font-bold text-sm hover:opacity-90 shadow-lg shadow-whatsapp/20 transition-all active:scale-95"
@@ -103,7 +110,8 @@ const PromotionsSection = () => {
               </a>
 
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
