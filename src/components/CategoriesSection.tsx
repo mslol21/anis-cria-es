@@ -24,7 +24,7 @@ const CategoriesSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {products.map((cat, i) => {
+          {products.filter(p => p.category !== 'Connect Cell').map((cat, i) => {
             const priceText = cat.isconsultprice 
               ? undefined 
               : (cat.promoprice || cat.price) 

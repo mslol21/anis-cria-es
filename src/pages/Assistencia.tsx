@@ -81,8 +81,86 @@ const Assistencia = () => {
           ))}
         </section>
 
+        {products.filter(p => p.category === 'Connect Cell').length > 0 && (
+          <section className="container mx-auto px-4 mb-20">
+            <h2 className="text-3xl font-heading font-bold text-slate-900 mb-8 text-center">
+              Nossos <span className="text-blue-600">Produtos</span>
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {products.filter(p => p.category === 'Connect Cell').map((product, i) => {
+                const priceText = product.isconsultprice 
+                  ? undefined 
+                  : (product.promoprice || product.price) 
+                    ? `${product.isstartingprice ? 'a partir de ' : ''}R$ ${product.promoprice || product.price}`
+                    : undefined;
 
+                return (
+                  <motion.a
+                    key={product.id}
+                    href={getWhatsAppLink(product.name, priceText)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    whileHover={{ y: -6 }}
+                    className="group relative rounded-xl overflow-hidden shadow-lg aspect-square"
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
+                    <div className="absolute inset-0 p-4 flex flex-col justify-end text-left">
+                      <h3 className="text-white font-heading font-bold text-base md:text-xl leading-tight mb-1">
+                        {product.name}
+                      </h3>
+                      {product.description && (
+                        <p className="text-white/80 text-[10px] md:text-xs line-clamp-2 mb-3 font-medium">
+                          {product.description}
+                        </p>
+                      )}
+                      
+                      <div className="flex items-end justify-between gap-2 mt-auto">
+                        <div className="flex flex-col">
+                          {product.isconsultprice ? (
+                            <span className="text-blue-400 font-bold text-sm leading-none italic">
+                              Sob Consulta
+                            </span>
+                          ) : product.promoprice ? (
+                            <>
+                              <span className="text-white/50 text-[10px] line-through leading-none">
+                                R$ {product.price}
+                              </span>
+                              <span className="text-blue-400 font-bold text-lg leading-none mt-1">
+                                {product.isstartingprice && <span className="text-[8px] font-medium block text-white/40 lowercase">a partir</span>}
+                                R$ {product.promoprice}
+                              </span>
+                            </>
+                          ) : (
+                            product.price && (
+                              <span className="text-white font-bold text-lg leading-none">
+                                {product.isstartingprice && <span className="text-[8px] font-medium block text-white/40 lowercase">a partir</span>}
+                                R$ {product.price}
+                              </span>
+                            )
+                          )}
+                        </div>
 
+                        <span className="inline-flex items-center gap-1 text-[10px] bg-green-500 text-white px-3 py-1.5 rounded-full font-bold shadow-lg transform group-hover:scale-105 transition-transform flex-shrink-0">
+                          <MessageCircle className="w-3 h-3" />
+                          Comprar
+                        </span>
+                      </div>
+                    </div>
+                  </motion.a>
+                );
+              })}
+            </div>
+          </section>
+        )}
         <section className="container mx-auto px-4">
           <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-[2.5rem] p-8 md:p-16 text-center text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
