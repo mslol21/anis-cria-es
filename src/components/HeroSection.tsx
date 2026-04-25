@@ -40,29 +40,24 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-10 font-body"
         >
-          Escolha os produtos, adicione ao carrinho e envie o pedido pronto. Simples, rápido e sem complicações.
+          Escolha os produtos, adicione ao carrinho e envie o pedido pronto em segundos.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col items-center justify-center gap-4"
         >
           <a
             href="#categorias"
-            className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#20ba59] transition-all shadow-xl animate-pulse-glow"
+            className="inline-flex flex-col items-center gap-1 bg-[#25D366] text-white px-10 py-6 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-[#20ba59] transition-all shadow-2xl active:scale-95 text-center w-full sm:w-auto"
           >
-            <MessageCircle className="w-6 h-6" />
-            Finalizar pedido no WhatsApp
-          </a>
-          <a
-            href="#categorias"
-            className="inline-flex items-center px-8 py-4 rounded-full font-bold text-lg border-2 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm transition-all"
-          >
-            Ver Catálogo
+            <span>Finalizar pedido no WhatsApp</span>
+            <span className="text-sm font-normal opacity-90">Simples, rápido e sem complicação</span>
           </a>
         </motion.div>
+
 
       </div>
 

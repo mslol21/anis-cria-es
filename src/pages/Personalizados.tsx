@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import CategoriesSection from "@/components/CategoriesSection";
+import { TrustSection, ConversionHighlight } from "@/components/ConversionElements";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
@@ -12,9 +13,12 @@ const Personalizados = () => {
     <div className="min-h-screen">
       <Header />
       <HeroSection />
+      <TrustSection />
       <CategoriesSection />
+      
+      <ConversionHighlight />
+      
       <HowItWorksSection />
-
       <TestimonialsSection />
       <CTASection />
       <Footer />
@@ -24,6 +28,7 @@ const Personalizados = () => {
     </div>
   );
 };
+
 
 
 export default Personalizados;

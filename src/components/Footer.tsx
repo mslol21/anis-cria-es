@@ -16,11 +16,9 @@ const Footer = () => {
               <h3 className="font-heading text-2xl font-bold">PedidoZap</h3>
             </div>
             <p className="text-primary-foreground/60 text-sm mb-4">
-
-
-              A forma mais rápida de vender no WhatsApp. <br />
-              <span className="font-bold text-xs">Simples, sem complicação.</span>
+              A forma mais rápida de vender e comprar pelo WhatsApp.
             </p>
+
             <div className="flex items-center justify-center md:justify-start gap-4">
               <a
                 href={getWhatsAppGenericLink()}

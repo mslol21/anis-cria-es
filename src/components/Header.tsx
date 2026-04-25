@@ -30,9 +30,10 @@ const Header = () => {
             <span className="font-heading text-xl font-bold text-primary leading-none">
               PedidoZap
             </span>
-            <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tight">
-              Monte o pedido e finalize no WhatsApp
+            <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-tight">
+              Seu pedido pronto no WhatsApp
             </span>
+
           </div>
         </Link>
 
@@ -59,11 +60,12 @@ const Header = () => {
             href={getWhatsAppGenericLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity animate-pulse-glow bg-whatsapp"
+            className="hidden sm:inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity active:scale-95 shadow-sm"
           >
             <MessageCircle className="w-4 h-4" />
-            Peça pelo WhatsApp
+            Finalizar pedido
           </a>
+
 
           {itemCount > 0 && (
             <div className="relative">
@@ -112,11 +114,12 @@ const Header = () => {
                 href={getWhatsAppGenericLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 text-white px-5 py-3 rounded-full font-semibold text-sm mt-2 bg-whatsapp"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-5 py-4 rounded-xl font-bold text-base mt-2"
               >
-                <MessageCircle className="w-4 h-4" />
-                Peça pelo WhatsApp
+                <MessageCircle className="w-5 h-5" />
+                Finalizar pedido
               </a>
+
             </nav>
           </motion.div>
         )}

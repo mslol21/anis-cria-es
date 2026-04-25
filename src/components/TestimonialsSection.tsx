@@ -3,21 +3,22 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Fernanda S.",
-    text: "As canecas ficaram lindas! Meus clientes amaram. Super recomendo a Anis Criações!",
-    role: "Empreendedora",
+    name: "Ana Silva",
+    text: "O PedidoZap facilitou muito minha vida. Meus clientes montam o pedido sozinhos e eu só recebo pronto no Zap!",
+    role: "Manicure & Estética",
   },
   {
-    name: "Pastor Ricardo",
-    text: "Fizemos os uniformes da igreja e ficaram perfeitos. Ótimo atendimento e preço justo.",
-    role: "Igreja Batista",
+    name: "Marcos Oliveira",
+    text: "Ficou muito mais profissional. O cliente escolhe os produtos, vê o total e me manda tudo organizado.",
+    role: "Barbearia Oliveira",
   },
   {
-    name: "Camila O.",
-    text: "As lembrancinhas do chá de bebê ficaram um encanto! Entrega rápida e qualidade top.",
-    role: "Cliente",
+    name: "Juliana Costa",
+    text: "Perfeito para quem trabalha sozinha. Não perco mais tempo explicando preços, o cliente já vê tudo no site.",
+    role: "Artesanatos Ju",
   },
 ];
+
 
 const TestimonialsSection = () => {
   return (

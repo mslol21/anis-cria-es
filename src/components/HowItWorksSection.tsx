@@ -4,25 +4,26 @@ import { ShoppingBag, Palette, CheckCircle, Truck } from "lucide-react";
 const steps = [
   {
     icon: ShoppingBag,
-    title: "Escolha os produtos",
-    desc: "Navegue pelo nosso catálogo e adicione o que desejar ao seu carrinho.",
+    title: "1. Escolha",
+    desc: "Navegue e adicione o que você precisa ao carrinho.",
   },
   {
     icon: Palette,
-    title: "Monte seu pedido",
-    desc: "Confira as quantidades e o valor total no carrinho de forma automática.",
+    title: "2. Confira",
+    desc: "Veja os itens e o valor total do seu pedido.",
   },
   {
     icon: CheckCircle,
-    title: "Finalize no WhatsApp",
-    desc: "Envie seu pedido pronto direto para o vendedor. Sem cadastro ou login.",
+    title: "3. Envie",
+    desc: "Mande o pedido pronto direto para o nosso WhatsApp.",
   },
   {
     icon: Truck,
-    title: "Combine a Entrega",
-    desc: "O vendedor confirma seu pedido e combina o pagamento e a entrega.",
+    title: "4. Receba",
+    desc: "Combinamos a entrega e o pagamento por lá mesmo.",
   },
 ];
+
 
 
 const HowItWorksSection = () => {
@@ -36,11 +37,12 @@ const HowItWorksSection = () => {
           className="text-center mb-14"
         >
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-3">
-            Como <span className="text-primary">Funciona</span>
+            Peça em <span className="text-primary">4 Passos</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Simples, rápido e sem complicação
+            Sem cadastro, sem login. Só escolher e pedir.
           </p>
+
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
