@@ -16,7 +16,8 @@ const navLinks = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { items } = useCart();
+  const { items, setIsCartOpen } = useCart();
+
   const location = useLocation();
   const itemCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -68,13 +69,17 @@ const Header = () => {
 
 
           {itemCount > 0 && (
-            <div className="relative">
-              <ShoppingCart className="w-6 h-6 text-foreground" />
-              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-background">
+            <button 
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 hover:bg-slate-100 rounded-full transition-colors group"
+            >
+              <ShoppingCart className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
+              <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-background">
                 {itemCount}
               </span>
-            </div>
+            </button>
           )}
+
 
           <button
             onClick={() => setIsOpen(!isOpen)}
