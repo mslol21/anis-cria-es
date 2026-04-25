@@ -141,12 +141,10 @@ export const Cart = () => {
           )}
         </SheetContent>
       </Sheet>
-    </>
-
-
       {/* Botão flutuante tradicional (apenas se a barra fixa estiver oculta por algum motivo, ou em desktop se preferir) */}
       {/* Para simplificar conforme pedido de conversão, vamos focar na barra fixa se houver itens */}
     </>
   );
 };
+
 
