@@ -1,41 +1,40 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getWhatsAppGenericLink } from "@/lib/whatsapp";
 import { Link, useLocation } from "react-router-dom";
+import { useCart } from "@/hooks/use-cart";
+import {
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const navLinks = [
   { label: "Início", href: "/" },
-  { label: "Personalizados", href: "/produtos-personalizados" },
-  { label: "Assistência Técnica", href: "/assistencia-tecnica" },
-
-
+  { label: "Produtos", href: "/produtos" },
   { label: "Contato", href: "/contato" },
-
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { items } = useCart();
   const location = useLocation();
+  const itemCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
-  const isAssistencia = location.pathname === "/assistencia-tecnica";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="Anis Criações" className="h-14 w-auto group-hover:scale-105 transition-transform" />
+          <img src="/logo.png" alt="PedidoZap" className="h-14 w-auto group-hover:scale-105 transition-transform" />
           <div className="flex flex-col">
-            <span className="font-heading text-lg font-bold text-primary leading-none">
-              Anis Criações
+            <span className="font-heading text-xl font-bold text-primary leading-none">
+              PedidoZap
             </span>
             <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tight">
-              Personalizados e acessórios
+              Monte o pedido e finalize no WhatsApp
             </span>
           </div>
-
         </Link>
-
 
 
         {/* Desktop nav */}
@@ -46,7 +45,7 @@ const Header = () => {
               to={link.href}
               className={`text-sm font-medium transition-colors ${
                 location.pathname === link.href 
-                ? (isAssistencia ? 'text-blue-600' : 'text-primary') 
+                ? 'text-primary' 
                 : 'text-foreground/80 hover:text-primary'
               }`}
             >
@@ -57,17 +56,23 @@ const Header = () => {
 
         <div className="flex items-center gap-3">
           <a
-            href={getWhatsAppGenericLink(isAssistencia)}
+            href={getWhatsAppGenericLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className={`hidden sm:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity animate-pulse-glow ${
-              isAssistencia ? 'bg-blue-600' : 'bg-whatsapp'
-            }`}
+            className="hidden sm:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity animate-pulse-glow bg-whatsapp"
           >
             <MessageCircle className="w-4 h-4" />
-            {isAssistencia ? "Falar com Técnico" : "Peça pelo WhatsApp"}
+            Peça pelo WhatsApp
           </a>
 
+          {itemCount > 0 && (
+            <div className="relative">
+              <ShoppingCart className="w-6 h-6 text-foreground" />
+              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-background">
+                {itemCount}
+              </span>
+            </div>
+          )}
 
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -77,6 +82,7 @@ const Header = () => {
           </button>
         </div>
       </div>
+
 
       {/* Mobile menu */}
       <AnimatePresence>
@@ -95,7 +101,7 @@ const Header = () => {
                   onClick={() => setIsOpen(false)}
                   className={`text-sm font-medium py-2 ${
                     location.pathname === link.href 
-                    ? (isAssistencia ? 'text-blue-600' : 'text-primary') 
+                    ? 'text-primary' 
                     : 'text-foreground/80 hover:text-primary'
                   }`}
                 >
@@ -106,12 +112,10 @@ const Header = () => {
                 href={getWhatsAppGenericLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-2 text-white px-5 py-3 rounded-full font-semibold text-sm mt-2 ${
-                  isAssistencia ? 'bg-blue-600' : 'bg-whatsapp'
-                }`}
+                className="inline-flex items-center justify-center gap-2 text-white px-5 py-3 rounded-full font-semibold text-sm mt-2 bg-whatsapp"
               >
                 <MessageCircle className="w-4 h-4" />
-                {isAssistencia ? "Falar com Técnico" : "Peça pelo WhatsApp"}
+                Peça pelo WhatsApp
               </a>
             </nav>
           </motion.div>

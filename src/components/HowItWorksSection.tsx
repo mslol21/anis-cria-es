@@ -4,25 +4,26 @@ import { ShoppingBag, Palette, CheckCircle, Truck } from "lucide-react";
 const steps = [
   {
     icon: ShoppingBag,
-    title: "Escolha o produto",
-    desc: "Navegue pelas categorias e escolha o que mais combina com você",
+    title: "Escolha os produtos",
+    desc: "Navegue pelo nosso catálogo e adicione o que desejar ao seu carrinho.",
   },
   {
     icon: Palette,
-    title: "Envie sua arte ou ideia",
-    desc: "Mande sua logo, foto ou descreva o que deseja",
+    title: "Monte seu pedido",
+    desc: "Confira as quantidades e o valor total no carrinho de forma automática.",
   },
   {
     icon: CheckCircle,
-    title: "Receba a aprovação",
-    desc: "Enviamos a arte final para sua aprovação antes de produzir",
+    title: "Finalize no WhatsApp",
+    desc: "Envie seu pedido pronto direto para o vendedor. Sem cadastro ou login.",
   },
   {
     icon: Truck,
-    title: "Produção e entrega",
-    desc: "Produzimos com qualidade e entregamos no prazo combinado",
+    title: "Combine a Entrega",
+    desc: "O vendedor confirma seu pedido e combina o pagamento e a entrega.",
   },
 ];
+
 
 const HowItWorksSection = () => {
   return (

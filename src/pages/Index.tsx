@@ -19,12 +19,13 @@ const Index = () => {
       <header className="py-4 border-b border-border bg-gradient-to-r from-primary/5 to-blue-500/5 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link to="/produtos-personalizados" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <img src="/logo.png" alt="Anis Criações" className="h-12 w-auto" />
+            <img src="/logo.png" alt="PedidoZap" className="h-12 w-auto" />
             <div className="flex flex-col leading-tight hidden sm:flex">
-              <h1 className="text-xl font-heading font-extrabold text-primary">Anis Criações</h1>
-              <span className="text-[10px] text-muted-foreground font-medium">Personalizados e acessórios</span>
+              <h1 className="text-xl font-heading font-extrabold text-primary">PedidoZap</h1>
+              <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-tight">Monte seu pedido no Zap</span>
             </div>
           </Link>
+
 
           <Link 
             to="/assistencia-tecnica" 
@@ -47,8 +48,9 @@ const Index = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="flex justify-center mb-10"
           >
-            <img src="/logo.png" alt="Anis Criações Logo" className="h-48 w-auto drop-shadow-2xl" />
+            <img src="/logo.png" alt="PedidoZap Logo" className="h-48 w-auto drop-shadow-2xl" />
           </motion.div>
+
 
           <motion.h2 
             initial={{ opacity: 0, y: -20 }}
@@ -81,8 +83,9 @@ const Index = () => {
                 <img src="/logo.png" alt="Personalizados" className="w-12 h-12 object-contain" />
               </div>
               <h3 className="text-2xl font-heading font-bold text-foreground mb-3 leading-tight">
-                Anis <span className="text-primary block text-lg">Criações</span>
+                Pedido<span className="text-primary block text-lg">Zap</span>
               </h3>
+
               <p className="text-muted-foreground text-sm mb-6 flex-grow">
                 Camisetas, canecas, brindes e materiais impressos com exclusividade.
               </p>

@@ -13,9 +13,10 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src="/hero-final.png"
-          alt="Produtos personalizados Anis Criações"
+          alt="Produtos PedidoZap"
           className="w-full h-full object-cover"
         />
+
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
@@ -28,20 +29,18 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold text-primary-foreground leading-tight mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold text-white leading-tight mb-6 drop-shadow-lg"
         >
-          Personalizados que{" "}
-          <span className="text-gradient-gold">vendem</span> e{" "}
-          <span className="text-gradient-gold">encantam</span>
+          Monte seu pedido e finalize direto no <span className="text-[#25D366]">WhatsApp</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-lg sm:text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto mb-10 font-body"
+          className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-10 font-body"
         >
-          Canecas, camisetas, brindes e material gráfico com preço promocional
+          Escolha os produtos, adicione ao carrinho e envie o pedido pronto. Simples, rápido e sem complicações.
         </motion.p>
 
         <motion.div
@@ -51,21 +50,20 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href={getWhatsAppGenericLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-whatsapp text-whatsapp-foreground px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition-all shadow-lg animate-pulse-glow"
+            href="#categorias"
+            className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#20ba59] transition-all shadow-xl animate-pulse-glow"
           >
             <MessageCircle className="w-6 h-6" />
-            Solicitar Orçamento Agora
+            Finalizar pedido no WhatsApp
           </a>
           <a
             href="#categorias"
-            className="inline-flex items-center px-8 py-4 rounded-full font-bold text-lg border-2 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 transition-all"
+            className="inline-flex items-center px-8 py-4 rounded-full font-bold text-lg border-2 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm transition-all"
           >
-            Ver Produtos
+            Ver Catálogo
           </a>
         </motion.div>
+
       </div>
 
       {/* Bottom wave */}

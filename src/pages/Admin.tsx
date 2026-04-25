@@ -372,8 +372,8 @@ const Admin = () => {
                     <option value="Personalizados">Personalizados</option>
                     <option value="Impressos">Impressos</option>
                     <option value="Promocional">Promocional</option>
-                    <option value="Connect Cell">Connect Cell</option>
                     <option value="Outros">Outros</option>
+
 
                   </select>
                 </div>
