@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7 }}
           className="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold text-white leading-tight mb-6 drop-shadow-lg"
         >
-          Seu sonho estampado em <span className="text-[#25D366]">Presentes Exclusivos</span>
+          Seu sonho estampado em <span className="text-secondary">Presentes Exclusivos</span>
         </motion.h1>
 
         <motion.p
@@ -51,7 +51,7 @@ const HeroSection = () => {
         >
           <a
             href="#categorias"
-            className="inline-flex flex-col items-center gap-1 bg-[#25D366] text-white px-10 py-6 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-[#20ba59] transition-all shadow-2xl active:scale-95 text-center w-full sm:w-auto"
+            className="inline-flex flex-col items-center gap-1 bg-primary text-white px-10 py-6 rounded-2xl font-bold text-xl sm:text-2xl hover:opacity-90 transition-all shadow-2xl active:scale-95 text-center w-full sm:w-auto"
           >
             <span>Ver Catálogo no WhatsApp</span>
             <span className="text-sm font-normal opacity-90">Rápido, prático e personalizado</span>

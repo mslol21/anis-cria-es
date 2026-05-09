@@ -59,7 +59,7 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsCartOpen(true)}
-            className="hidden sm:inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity active:scale-95 shadow-sm"
+            className="hidden sm:inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity active:scale-95 shadow-sm"
           >
             <MessageCircle className="w-4 h-4" />
             Finalizar pedido
@@ -119,7 +119,7 @@ const Header = () => {
                   setIsCartOpen(true);
                   setIsOpen(false);
                 }}
-                className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-5 py-4 rounded-xl font-bold text-base mt-2"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-5 py-4 rounded-xl font-bold text-base mt-2"
               >
                 <MessageCircle className="w-5 h-5" />
                 Finalizar pedido

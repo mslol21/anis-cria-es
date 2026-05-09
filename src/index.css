@@ -15,16 +15,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    --primary: 142 70% 40%; /* WhatsApp Green */
+    --primary: 340 82% 52%; /* Magenta from logo */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 10%;
+    --secondary: 199 100% 50%; /* Sky Blue from logo */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 142 70% 40%;
+    --accent: 340 82% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -32,17 +32,15 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 142 70% 40%;
+    --ring: 340 82% 52%;
 
     --radius: 0.5rem;
 
-    --gold: 142 70% 40%;
+    --gold: 40 85% 55%;
     --gold-foreground: 0 0% 100%;
-    --promo: 142 70% 40%;
+    --promo: 340 82% 52%;
     --promo-foreground: 0 0% 100%;
     --whatsapp: 142 70% 40%;
-
-
     --whatsapp-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
@@ -109,15 +107,15 @@
   }
 
   .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(338 80% 55%) 0%, hsl(350 75% 50%) 50%, hsl(0 80% 55%) 100%);
+    background: linear-gradient(135deg, hsl(340 82% 52%) 0%, hsl(199 100% 50%) 100%);
   }
 
   .bg-gradient-promo {
-    background: linear-gradient(135deg, hsl(0 80% 50%), hsl(338 80% 45%));
+    background: linear-gradient(135deg, hsl(340 82% 52%), hsl(340 82% 40%));
   }
 
   .shadow-promo {
-    box-shadow: 0 8px 30px -8px hsl(338 80% 55% / 0.4);
+    box-shadow: 0 8px 30px -8px hsl(340 82% 52% / 0.4);
   }
 
   .shadow-gold {
