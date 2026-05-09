@@ -26,13 +26,13 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="PedidoZap" className="h-14 w-auto group-hover:scale-105 transition-transform" />
+          <img src="/logo.png" alt="Anis Criações" className="h-14 w-auto group-hover:scale-105 transition-transform" />
           <div className="flex flex-col">
             <span className="font-heading text-xl font-bold text-primary leading-none">
-              PedidoZap
+              Anis Criações
             </span>
             <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-tight">
-              Seu pedido pronto no WhatsApp
+              Personalizados que vendem e encantam
             </span>
 
           </div>

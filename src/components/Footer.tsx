@@ -11,12 +11,12 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
               <div className="bg-white p-2 rounded-xl">
-                <img src="/logo.png" alt="PedidoZap" className="h-12 w-auto" />
+                <img src="/logo.png" alt="Anis Criações" className="h-12 w-auto" />
               </div>
-              <h3 className="font-heading text-2xl font-bold">PedidoZap</h3>
+              <h3 className="font-heading text-2xl font-bold">Anis Criações</h3>
             </div>
             <p className="text-primary-foreground/60 text-sm mb-4">
-              A forma mais rápida de vender e comprar pelo WhatsApp.
+              Especializada em canecas, camisetas, brindes e material gráfico personalizado.
             </p>
 
             <div className="flex items-center justify-center md:justify-start gap-4">
@@ -61,7 +61,7 @@ const Footer = () => {
         
         <div className="border-t border-primary-foreground/10 mt-12 pt-6 text-center">
           <p className="text-primary-foreground/40 text-xs">
-            © 2026 PedidoZap. Todos os direitos reservados.
+            © 2024 Anis Criações. Todos os direitos reservados.
           </p>
         </div>
       </div>

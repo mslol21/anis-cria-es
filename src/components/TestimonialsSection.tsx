@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 const testimonials = [
   {
     name: "Ana Silva",
-    text: "O PedidoZap facilitou muito minha vida. Meus clientes montam o pedido sozinhos e eu só recebo pronto no Zap!",
+    text: "A Anis Criações superou minhas expectativas. As canecas ficaram lindas e o atendimento foi excelente!",
     role: "Manicure & Estética",
   },
   {

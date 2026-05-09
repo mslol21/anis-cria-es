@@ -13,7 +13,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src="/hero-final.png"
-          alt="Produtos PedidoZap"
+          alt="Produtos Anis Criações"
           className="w-full h-full object-cover"
         />
 
@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7 }}
           className="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold text-white leading-tight mb-6 drop-shadow-lg"
         >
-          Monte seu pedido e finalize direto no <span className="text-[#25D366]">WhatsApp</span>
+          Seu sonho estampado em <span className="text-[#25D366]">Presentes Exclusivos</span>
         </motion.h1>
 
         <motion.p
@@ -40,7 +40,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-10 font-body"
         >
-          Escolha os produtos, adicione ao carrinho e envie o pedido pronto em segundos.
+          Canecas, camisetas, brindes e materiais personalizados para encantar quem você ama.
         </motion.p>
 
         <motion.div
@@ -53,8 +53,8 @@ const HeroSection = () => {
             href="#categorias"
             className="inline-flex flex-col items-center gap-1 bg-[#25D366] text-white px-10 py-6 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-[#20ba59] transition-all shadow-2xl active:scale-95 text-center w-full sm:w-auto"
           >
-            <span>Finalizar pedido no WhatsApp</span>
-            <span className="text-sm font-normal opacity-90">Simples, rápido e sem complicação</span>
+            <span>Ver Catálogo no WhatsApp</span>
+            <span className="text-sm font-normal opacity-90">Rápido, prático e personalizado</span>
           </a>
         </motion.div>
 

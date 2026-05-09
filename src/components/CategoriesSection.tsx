@@ -36,14 +36,14 @@ const CategoriesSection = () => {
             Adicione os produtos ao carrinho e envie o pedido completo pelo WhatsApp.
           </p>
           <div className="mt-4 inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold">
-            <ShoppingCart className="w-4 h-4" />
-            Recebemos seu pedido pronto no Zap
+            <Check className="w-4 h-4" />
+            Personalizados feitos com amor
           </div>
 
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product, i) => {
+          {products.filter(p => p.category !== 'Connect Cell').map((product, i) => {
 
             const isAdded = addedItems.includes(product.id);
 

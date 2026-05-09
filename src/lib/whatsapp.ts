@@ -4,7 +4,7 @@ export const WHATSAPP_NUMBERS = {
 
 
 export const getWhatsAppLink = (productName: string, priceText?: string) => {
-  let message = `Olá PedidoZap! Vi no site e quero orçamento para ${productName}`;
+  let message = `Olá Anis Criações! Vi no site e quero orçamento para ${productName}`;
 
   if (priceText) {
     message += ` no valor de ${priceText}`;
@@ -14,7 +14,7 @@ export const getWhatsAppLink = (productName: string, priceText?: string) => {
 
 export const getWhatsAppGenericLink = () => {
   const target = WHATSAPP_NUMBERS.pedidozap;
-  const message = encodeURIComponent("Olá PedidoZap! Gostaria de solicitar um orçamento para produtos.");
+  const message = encodeURIComponent("Olá Anis Criações! Gostaria de solicitar um orçamento para produtos personalizados.");
   return `https://wa.me/${target}?text=${message}`;
 };
 export const getWhatsAppCartLink = (items: any[], total: number) => {
